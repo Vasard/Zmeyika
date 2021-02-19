@@ -10,15 +10,24 @@ namespace Zmeyika
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 3, '*'); //создаём точку с некими координатами
-            p1.Draw(); //выводим её на экран 
-            //принцип называется инкапсуляцией. всё, что относится к точке сосредоточено в другом классе 
-            Point p2 = new Point(4, 5, '#');
-            p2.Draw();
+            Console.SetBufferSize(80, 25); //устанавливает размер окна 
+            //и убирает возможность перемотки
 
-            Console.ReadLine();
+            //Отрисовка рамочки
+            HorizontallLine upLine = new HorizontallLine(0, 78, 0, '+');
+            HorizontallLine downLine = new HorizontallLine(0, 78, 24, '+');
+            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
+            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
+            upLine.Drow();
+            downLine.Drow();
+            leftLine.Drow();
+            rightLine.Drow();
+
+            //Отрисовка точек
+            Point p = new Point(4, 5, '*');
+            p.Draw();
         }
-        
-      
+
     }
+
 }
