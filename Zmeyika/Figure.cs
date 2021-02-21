@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Zmeyika;
 
-namespace ZmeykaGame
+namespace Zmeyika
 {
     class Figure
     {

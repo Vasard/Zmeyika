@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zmeyika
 {
-    class VerticalLine
+    class VerticalLine : Figure
     {
-        List<Point> pList; //список точек
+        
 
         public VerticalLine(int yUp, int yDown, int x, char sym)//конструктор, 
             //передаёт несколько параметров 
@@ -25,12 +25,6 @@ namespace Zmeyika
             }
         }
 
-        public void Drow() //метод, который отображает список точек
-        {
-            foreach(Point p in pList)
-            {
-                p.Draw();
-            }
-        }
+        
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Zmeyika
 {
-    class HorizontallLine
+    class HorizontallLine : Figure //горизонтальная линия 
+        //наследуется от фигуры. Теперь этот класс содержит всё, что
+        //есть в классе фигуры
     {
-        List<Point> pList;
-
+       
 
         //создаём конструктор
         //метод, который будет называться при создании
@@ -27,13 +26,6 @@ namespace Zmeyika
             }
 
         }
-        //выводим на экран с помощью метода
-        public void Drow ()
-        {
-            foreach(Point p in pList) //пробегает по всем точкам из списка
-            {
-                p.Draw(); //выводит их на экран
-            }
-        }
+        
     }
 }
