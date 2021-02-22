@@ -21,7 +21,7 @@ namespace Zmeyika
             for(int x = xLeft; x <= xRight; x++) //на каждой оперции x будет получать значение
                 //начиная от xLeft заканчивая xRight
             {
-                Point p = new Point(x, y, sym); //создаём точки с нужными координатами
+                Point p = new Point(x, y, sym, ConsoleColor.White); //создаём точки с нужными координатами
                 pList.Add(p); //добавляем в список точек
             }
 

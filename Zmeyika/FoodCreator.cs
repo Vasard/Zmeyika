@@ -12,7 +12,7 @@ namespace Zmeyika
 
         Random rnd = new Random();
 
-        public FoodCreator(int mapW, int mapH, char sym)
+        public FoodCreator(int mapW, int mapH, char sym, ConsoleColor color_)
         {
             this.mapH = mapH;
             this.mapW = mapW;
@@ -23,7 +23,7 @@ namespace Zmeyika
         {
             int x = rnd.Next(2, mapW - 2);
             int y = rnd.Next(2, mapH - 2);
-            return new Point(x, y, sym);
+            return new Point(x, y, sym, color);
         }
     }
 }

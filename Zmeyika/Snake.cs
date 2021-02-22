@@ -9,14 +9,14 @@ namespace Zmeyika
     {
         //создаём конструктор
 
-        Direction direction;
+        public Direction direction;
         public Snake(Point tail, int lenght, Direction _direction)
         {
             direction = _direction;
             pList = new List<Point>();
             for (int i = 0; i < lenght; i++)
             {
-                Point p = new Point(tail);
+                Point p = new Point(tail, ConsoleColor.Red);
                 p.Move(i, direction);
                 pList.Add(p);
             }
@@ -35,7 +35,7 @@ namespace Zmeyika
         public Point GetNextPoint()
         {
             Point head = pList.Last();
-            Point nextPoint = new Point(head);
+            Point nextPoint = new Point(head, ConsoleColor.Red);
             nextPoint.Move(1, direction);
             return nextPoint;
         }

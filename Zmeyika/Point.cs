@@ -9,14 +9,16 @@ namespace Zmeyika
         public int x;
         public int y;
         public char sym;
-        public Point(int _x, int _y, char _sym)
+        public ConsoleColor color;
+        public Point(int _x, int _y, char _sym, ConsoleColor color_)
         {
             x = _x;
             y = _y;
             sym = _sym;
+            color = color_;
         }
 
-        public Point(Point p)
+        public Point(Point p, ConsoleColor color_)
         {
             x = p.x;
             y = p.y;
@@ -46,6 +48,7 @@ namespace Zmeyika
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = color;
             Console.Write(sym);
         }
         public bool IsHit(Point p)
