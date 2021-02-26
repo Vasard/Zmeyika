@@ -4,28 +4,20 @@ using System.Text;
 
 namespace Zmeyika
 {
-    class HorizontallLine : Figure //горизонтальная линия 
-        //наследуется от фигуры. Теперь этот класс содержит всё, что
-        //есть в классе фигуры
+    class HorizontalLIne : Figure// наследование
     {
-       
 
-        //создаём конструктор
-        //метод, который будет называться при создании
-
-        public HorizontallLine(int xLeft, int xRight, int y, char sym) //при создании горизонтальной линии
-            //пишем параметры, которые будем задавать в ()
+        public HorizontalLIne(int xLeft, int xReight, int y, char sym)
         {
-            pList = new List<Point>();  //создаём пустой список
-            //создаём цикл for
-            for(int x = xLeft; x <= xRight; x++) //на каждой оперции x будет получать значение
-                //начиная от xLeft заканчивая xRight
+            pList = new List<Point>();
+            for (int x = xLeft; x <= xReight; x++)
             {
-                Point p = new Point(x, y, sym, ConsoleColor.White); //создаём точки с нужными координатами
-                pList.Add(p); //добавляем в список точек
+                Point p = new Point(x, y, sym, ConsoleColor.White);
+                pList.Add(p);
             }
 
         }
-        
+
+
     }
 }

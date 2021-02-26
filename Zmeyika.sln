@@ -5,6 +5,15 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zmeyika", "Zmeyika\Zmeyika.csproj", "{82DF5C28-79C9-4743-88D3-AFB567905158}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{0504C609-DA43-4676-BAB8-1296540545BA}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\click.mp3 = ..\..\..\Downloads\click.mp3
+		..\..\..\Downloads\lost.mp3 = ..\..\..\Downloads\lost.mp3
+		..\..\..\Desktop\record.txt = ..\..\..\Desktop\record.txt
+		..\..\..\Desktop\results.txt = ..\..\..\Desktop\results.txt
+		..\..\..\Downloads\stardust.mp3 = ..\..\..\Downloads\stardust.mp3
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

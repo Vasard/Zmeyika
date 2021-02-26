@@ -7,30 +7,30 @@ namespace Zmeyika
 {
     class Snake : Figure
     {
-        //создаём конструктор
-
         public Direction direction;
-        public Snake(Point tail, int lenght, Direction _direction)
+
+        public Snake(Point tail, int length, Direction _direction)
         {
             direction = _direction;
             pList = new List<Point>();
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < length; i++)
             {
                 Point p = new Point(tail, ConsoleColor.Red);
                 p.Move(i, direction);
                 pList.Add(p);
             }
         }
-
         internal void Move()
         {
-            Point tail = pList.First();
-            pList.Remove(tail);
-            Point head = GetNextPoint();
-            pList.Add(head);
-
-            tail.Clear();
-            head.Draw();
+            if (direction!=Direction.PAUS)
+            {
+                Point tail = pList.First();
+                pList.Remove(tail);
+                Point head = GetNextPoint();
+                pList.Add(head);
+                tail.Clear();
+                head.Draw();
+            }
         }
         public Point GetNextPoint()
         {
@@ -38,28 +38,6 @@ namespace Zmeyika
             Point nextPoint = new Point(head, ConsoleColor.Red);
             nextPoint.Move(1, direction);
             return nextPoint;
-        }
-        internal bool Eat(Point food)
-        {
-            Point head = GetNextPoint();
-            if (head.IsHit(food))
-            {
-                food.sym = head.sym;
-                pList.Add(food);
-                return true;
-            }
-            else
-                return false;
-        }
-        internal bool IsHitTail()
-        {
-            var head = pList.Last();
-            for (int i = 0; i < pList.Count - 2; i++)
-            {
-                if (head.IsHit(pList[i]))
-                    return true;
-            }
-            return false;
         }
         public void HandleKey(ConsoleKey key)
         {
@@ -71,13 +49,29 @@ namespace Zmeyika
             {
                 direction = Direction.RIGHT;
             }
+            else if (key == ConsoleKey.DownArrow)
+            {
+                direction = Direction.DOWN;
+            }
             else if (key == ConsoleKey.UpArrow)
             {
                 direction = Direction.UP;
             }
-            else if (key == ConsoleKey.DownArrow)
+
+
+        }
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
             {
-                direction = Direction.DOWN;
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

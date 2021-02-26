@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Zmeyika
 {
@@ -26,7 +24,7 @@ namespace Zmeyika
 			}
 			else { return false; }
 		}
-		public void ScoreWrite()
+        public void ScoreWrite()
 		{
 			Console.SetCursorPosition(90, 10);
 			Console.WriteLine("Score:" + score.ToString());

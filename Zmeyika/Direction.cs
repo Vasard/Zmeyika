@@ -10,6 +10,7 @@ namespace Zmeyika
         LEFT,
         RIGHT,
         UP,
-        DOWN
+        DOWN,
+        PAUS
     }
 }

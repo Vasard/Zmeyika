@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace Zmeyika
@@ -10,21 +11,23 @@ namespace Zmeyika
         public int y;
         public char sym;
         public ConsoleColor color;
-        public Point(int _x, int _y, char _sym, ConsoleColor color_)
+        public Point()
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
+        }
+        public Point(int x_, int y_, char sym_, ConsoleColor color_)
+        {
+            x = x_;
+            y = y_;
+            sym = sym_;
             color = color_;
         }
-
         public Point(Point p, ConsoleColor color_)
         {
             x = p.x;
             y = p.y;
             sym = p.sym;
+            color = color_;
         }
-
         public void Move(int offset, Direction direction)
         {
             if (direction == Direction.RIGHT)
@@ -43,6 +46,17 @@ namespace Zmeyika
             {
                 y = y + offset;
             }
+            else if (direction == Direction.PAUS)
+            {
+                Console.ReadKey();
+            }
+
+        }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
         }
 
         public void Draw()
@@ -51,20 +65,16 @@ namespace Zmeyika
             Console.ForegroundColor = color;
             Console.Write(sym);
         }
-        public bool IsHit(Point p)
+        public override string ToString()
+        {
+            return x + "," + y + "," + sym;
+        }
+
+        internal bool IsHit(Point p)
         {
             return p.x == this.x && p.y == this.y;
         }
 
-        public override string ToString()
-        {
-            return x + ", " + y + ", " + sym;
-        }
 
-        public void Clear()
-        {
-            sym = ' ';
-            Draw();
-        }
     }
 }

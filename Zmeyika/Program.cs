@@ -1,85 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Zmeyika
-{ 
+{
     class Program
     {
-        static void Main(string[] args)
+        public void game_draw()
         {
+            Console.Clear();
+            Console.Title = "Snake";
+            Console.SetWindowSize(101, 26);
+            HorizontalLIne upline = new HorizontalLIne(0, 100, 0, '+');
+            HorizontalLIne downline = new HorizontalLIne(0, 100, 25, '+');
+            VerticalLine leftline = new VerticalLine(1, 25, 0, '+');
+            VerticalLine rightline = new VerticalLine(1, 25, 100, '+');
+            upline.Draw();
+            downline.Draw();
+            leftline.Draw();
+            rightline.Draw();
+            Parametrs settings = new Parametrs();
+            //Sounds sound = new sounds(settings.getresourcefolder());
+            //sound.play("stardust.mp3");
 
-            int winH = 34;
-            int winW = 80;
-
-            /*Point p1 = new Point(1,3,'*');
-            p1.Draw();
-            Point p2 = new Point(4, 5, '#');
-            p2.Draw();*/
-
-            Console.SetWindowSize(winW, winH);
-
-            Walls walls = new Walls(winW, winH);
-            walls.Draw();
-
-
-            FoodCreator foodCreator = new FoodCreator(winW, winH, '0', ConsoleColor.Green);
-            Point food = foodCreator.CreateFood();
-            food.Draw();
-
-            Point p = new Point(4, 5, '/', ConsoleColor.Red);
+            Point p = new Point(4, 5, '*', ConsoleColor.Red);
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
+            FoodCreator foodCreator = new FoodCreator(101, 26, '¤', ConsoleColor.Green);
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+            Score score = new Score(0, 1);//score =0, level=1
+            score.speed = 400;
+            score.ScoreWrite();
             while (true)
             {
                 if (snake.Eat(food))
                 {
-                    Score.ScoreUp();
-                    Score.ScoreWrite();
+                    score.ScoreUp();
+                    score.ScoreWrite();
                     food = foodCreator.CreateFood();
                     food.Draw();
-                    if (Score.ScoreUp())
-					{
-                        Score.speed -= 10;
-					}
+                    //sound.Stop("stardust.mp3");
+                    if (score.ScoreUp())
+                    {
+                        score.speed -= 10;
+                    }
                 }
-               
                 else
                 {
                     snake.Move();
                 }
-                Thread.Sleep(50);
+                Thread.Sleep(score.speed);
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();
+                    ConsoleKeyInfo key = Console.ReadKey(true);
                     snake.HandleKey(key.Key);
                 }
             }
-            GameOver();
-            Console.ReadLine();
+        }
 
-            static void GameOver()
+        static void Main(string[] args)
+        {
+            Start start = new Start();
+            if (start.choice() == 1)
             {
-                int xOff = 25;
-                int yOff = 8;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(xOff, yOff++);
-                WriteText("=====================================", xOff, yOff++);
-                WriteText("G A M E O V E R", xOff + 10, yOff++);
-                yOff++;
-                WriteText("Cringe", xOff + 14, yOff++);
-                WriteText("Oh no.", xOff + 1, yOff++);
-                WriteText("=====================================", xOff, yOff++);
+                Program prog = new Program();
+                prog.game_draw();
+            }
+            else
+            {
+                start.Game_stop();
             }
 
-            static void WriteText(string text, int xOff, int yOff)
-            {
-                Console.SetCursorPosition(xOff, yOff);
-                Console.WriteLine(text);
-            }
+
+            //Console.ReadLine();
         }
     }
 }

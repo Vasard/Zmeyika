@@ -4,25 +4,24 @@ using System.Text;
 
 namespace Zmeyika
 {
-    class FoodCreator
+    class FoodCreator//класс для создания еды
     {
-        private int mapW;
-        private int mapH;
-        private char sym;
-
-        Random rnd = new Random();
-
+        int mapW;
+        int mapH;
+        char sym;
+        ConsoleColor color;
+        Random rand = new Random();
         public FoodCreator(int mapW, int mapH, char sym, ConsoleColor color_)
         {
-            this.mapH = mapH;
             this.mapW = mapW;
+            this.mapH = mapH;
             this.sym = sym;
+            color = color_;
         }
-
         public Point CreateFood()
         {
-            int x = rnd.Next(2, mapW - 2);
-            int y = rnd.Next(2, mapH - 2);
+            int x = rand.Next(2, mapH - 2);
+            int y = rand.Next(2, mapH - 2);
             return new Point(x, y, sym, color);
         }
     }
