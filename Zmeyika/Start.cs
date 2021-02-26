@@ -30,7 +30,11 @@ namespace Zmeyika
         public void Game_stop()
         {
             Console.Clear();
-            Console.WriteLine("Exit");
+            Console.WriteLine(" ****      ***   *       *  *****     *****   *        *  *****  ****");
+            Console.WriteLine("*         *   *  * *   * *  *        *     *   *      *   *      *   *");
+            Console.WriteLine("*   ***   *****  *   *   *  ****     *     *    *    *    *****  ****");
+            Console.WriteLine("*    *    *   *  *       *  *        *     *     *  *     *      *  *");
+            Console.WriteLine(" ***      *   *  *       *  *****     *****       **      *****  *   *");
             Console.Beep();
 
         }
