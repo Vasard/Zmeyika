@@ -29,8 +29,12 @@ namespace Zmeyika
             FoodCreator foodCreator = new FoodCreator(101, 26, '¤', ConsoleColor.Green);
             Point food = foodCreator.CreateFood();
             food.Draw();
+            gg g = new gg(4, 5, '/', ConsoleColor.Black);
+            kakashki_creator kakashkiCreator = new kakashki_creator(101, 26, '?', ConsoleColor.Black);
+            gg kakashki = kakashkiCreator.CreateKakashki();
+            kakashki.Draw();
             Score score = new Score(0, 1);//score =0, level=1
-            score.speed = 400;
+            score.speed = 800;
             score.ScoreWrite();
             while (true)
             {
@@ -56,6 +60,22 @@ namespace Zmeyika
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     snake.HandleKey(key.Key);
                 }
+                //if (snake.Eat())
+                //{
+                //    score.ScoreDown();
+                //    score.ScoreWrite();
+                //    kakashki = kakashkiCreator.CreateKakashki();
+                //    kakashki.Draw();
+                //    //sound.Stop("stardust.mp3");
+                //    if (score.ScoreDown())
+                //    {
+                //        score.speed -= 10;
+                //    }
+                //}
+                //else
+                //{
+                //    snake.Move();
+                //}
             }
         }
 
@@ -71,9 +91,11 @@ namespace Zmeyika
             {
                 start.Game_stop();
             }
-
+            
 
             //Console.ReadLine();
         }
+
+        
     }
 }

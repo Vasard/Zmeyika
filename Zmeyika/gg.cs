@@ -5,31 +5,31 @@ using System.Text;
 
 namespace Zmeyika
 {
-    class Point
+    class gg
     {
         public int x;
         public int y;
         public char sym;
         public ConsoleColor color;
-        public Point()
+        public gg()
         {
         }
-        public Point(int x_, int y_, char sym_, ConsoleColor color_)
+        public gg(int x_, int y_, char sym_, ConsoleColor color_)
         {
             x = x_;
             y = y_;
             sym = sym_;
             color = color_;
         }
-        public Point(Point p, ConsoleColor color_)
+        public gg(gg g, ConsoleColor color_)
         {
-            x = p.x;
-            y = p.y;
-            sym = p.sym;
+            x = g.x;
+            y = g.y;
+            sym = g.sym;
             color = color_;
         }
 
-        
+
 
         public void Move(int offset, Direction direction)
         {
@@ -73,9 +73,9 @@ namespace Zmeyika
             return x + "," + y + "," + sym;
         }
 
-        internal bool IsHit(Point p)
+        internal bool IsHit(gg g)
         {
-            return p.x == this.x && p.y == this.y;
+            return g.x == this.x && g.y == this.y;
         }
     }
 }

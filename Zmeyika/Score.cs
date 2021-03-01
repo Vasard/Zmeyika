@@ -24,7 +24,17 @@ namespace Zmeyika
 			}
 			else { return false; }
 		}
-        public void ScoreWrite()
+		public bool ScoreDown() //метод, который уменьшает баллы
+		{
+			score -= 1;
+			if (score % 10 == 0)
+			{
+				level -= 1;
+				return true;
+			}
+			else { return false; }
+		}
+		public void ScoreWrite()
 		{
 			Console.SetCursorPosition(90, 10);
 			Console.WriteLine("Score:" + score.ToString());

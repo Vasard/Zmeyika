@@ -22,20 +22,33 @@ namespace Zmeyika
         }
         internal void Move()
         {
+            Random rnd = new Random();
+            int i = rnd.Next(0, 10);
+            
             if (direction!=Direction.PAUS)
             {
                 Point tail = pList.First();
-                pList.Remove(tail);
+                if (i!=0)
+                {
+                    pList.Remove(tail);
+                }
+                else
+                {
+
+                }
                 Point head = GetNextPoint();
                 pList.Add(head);
                 tail.Clear();
                 head.Draw();
+                
             }
         }
         public Point GetNextPoint()
         {
             Point head = pList.Last();
             Point nextPoint = new Point(head, ConsoleColor.Red);
+            Point k = new Point(); //
+            
             nextPoint.Move(1, direction);
             return nextPoint;
         }
@@ -62,7 +75,7 @@ namespace Zmeyika
         }
         internal bool Eat(Point food)
         {
-            Point head = GetNextPoint();
+            Point head = GetNextPoint(); //рандомно
             if (head.IsHit(food))
             {
                 food.sym = head.sym;
@@ -74,5 +87,25 @@ namespace Zmeyika
                 return false;
             }
         }
+
+        //internal bool kakashki(gg kakashki)
+        //{
+        //    gg head = GetNextgg();
+        //    if (head.IsHit(kakashki))
+        //    {
+        //        kakashki.sym = head.sym;
+        //        gList.Add(kakashki);
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //internal bool Eat(gg kakashki)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
